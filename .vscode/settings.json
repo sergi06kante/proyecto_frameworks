@@ -1,0 +1,3 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}\\pauf\\reservas\\.venv\\Scripts\\python.exe"
+}

@@ -1,0 +1,17 @@
+{% extends "reservas/base.html" %}
+{% block titulo %}{{ espacio.nombre }}{% endblock %}
+{% block contenido %}
+<h1>{{ espacio.nombre }}</h1>
+<p>{{ espacio.get_tipo_display }} Aforo: {{ espacio.aforo }} {{ espacio.activo|yesno:"Disponible, No disponible" }}</p>
+<h2>Próximas reservas confirmadas</h2>
+{% if reservas %}
+<ul>
+    {% for reserva in reservas %}
+    <li>{{ reserva.fecha|date:"d/m/Y" }} de {{ reserva.hora_inicio|time:"H:i" }} a {{ reserva.hora_fin|time:"H:i" }} ({{ reserva.usuario.username }})</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay reservas confirmadas.</p>
+{% endif %}
+<p><a href="{% url 'reservas:lista' %}">Volver a los espacios</a></p>
+{% endblock %}

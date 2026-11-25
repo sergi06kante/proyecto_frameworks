@@ -1,0 +1,31 @@
+{% extends "reservas/base.html" %}
+{% block titulo %}Mis reservas{% endblock %}
+{% block contenido %}
+<h1>Mis reservas</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Espacio</th>
+            <th>Fecha</th>
+            <th>Horario</th>
+            <th>Motivo</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+            <td>{{ reserva.espacio.nombre }}</td>
+            <td>{{ reserva.fecha|date:"d/m/Y" }}</td>
+            <td>{{ reserva.hora_inicio|time:"H:i" }} - {{ reserva.hora_fin|time:"H:i" }}</td>
+            <td>{{ reserva.motivo }}</td>
+            <td>{{ reserva.get_estado_display }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No tenéis reservas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

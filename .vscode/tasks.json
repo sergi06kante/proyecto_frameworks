@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Django: Run reservas",
+			"type": "shell",
+			"command": "C:\\Users\\Sergio\\mi_proyecto_django\\pauf\\reservas\\.venv\\Scripts\\python.exe",
+			"args": [
+				"pauf\\reservas\\manage.py",
+				"runserver",
+				"127.0.0.1:8000"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

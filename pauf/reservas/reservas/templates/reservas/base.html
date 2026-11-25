@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}Reservas{% endblock %} | IES Hontanilla</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'reservas:lista' %}">Espacios</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'reservas:nueva' %}">Nueva reserva</a>
+        <a href="{% url 'reservas:mias' %}">Mis reservas</a>
+        <span>{{ user.username }}</span>
+        <form method="post" action="{% url 'logout' %}" style="display: inline">
+            {% csrf_token %}
+            <button type="submit">Salir</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+    </header>
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>
